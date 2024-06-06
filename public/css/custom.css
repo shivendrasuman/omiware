@@ -1,0 +1,17 @@
+/* Custom page CSS
+-------------------------------------------------- */
+main > .container {
+    padding: 60px 15px 0;
+  }
+  .table .thead-dark th {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+}
+.invalid-form-error {
+  
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: .875em;
+  color: var(--bs-form-invalid-color);
+}
