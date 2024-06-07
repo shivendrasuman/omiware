@@ -71,11 +71,11 @@
               <h4 class="mb-3">Configuration</h4>
               <form class="needs-validation" novalidate="">
                 <div class="col-sm-12">
-                  <label for="user_mobile" class="form-label">Request URL</label>
+                  <label for="api_url" class="form-label">Request URL</label>
                   <input type="tel"  class="form-control" id="api_url" name="api_url" placeholder="" value="{{ config('omiwaregateway.api_url') }}" required>
-                  @if ($errors->has('user_mobile'))
+                  @if ($errors->has('api_url'))
                   <div class="invalid-form-error">
-                      {{ $errors->first('user_mobile') }}
+                      {{ $errors->first('api_url') }}
                   </div>
                   @endif
                 </div>
