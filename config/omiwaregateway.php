@@ -28,11 +28,11 @@ return [
 	/**
 	 * api url for paymnetrequest
 	 */
-	'api_url' => 'https://uatpgbiz2.omniware.in/v2/paymentrequest',
+	'api_url' => 'https://uatpgbiz.omniware.in/v2/paymentrequest',
 	/**
 	 * api url for paymnet refund
 	 */
-	"api_refund" => 'https://uatpgbiz2.omniware.in/v2/refundrequest',
+	"api_refund" => 'https://uatpgbiz.omniware.in/v2/refundrequest',
 
 	/**
 	 * mode type , either TEST or LIVE
