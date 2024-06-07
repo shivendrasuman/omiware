@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,14 +33,14 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/payment', [App\Http\Controllers\FrontController::class,'index'])->middleware(['auth', 'verified'])->name('payment');
-Route::get('/payment-success', [App\Http\Controllers\FrontController::class,'paymentsuccess'])->middleware(['auth', 'verified'])->name('paymentsuccess');
-Route::get('/payment-cancel', [App\Http\Controllers\FrontController::class,'paymentcancel'])->middleware(['auth', 'verified'])->name('paymentcancel');
-Route::post('/submitresponse', [App\Http\Controllers\PaymentController::class,'submitresponse'])->middleware(['auth', 'verified'])->name('submitresponse');
-Route::get('/payment-history', [App\Http\Controllers\PaymentController::class,'index'])->middleware(['auth', 'verified'])->name('paymenthistory');
-Route::post('/payment-history', [App\Http\Controllers\PaymentController::class,'index'])->middleware(['auth', 'verified'])->name('paymenthistorySearch');
-Route::any('/response', [App\Http\Controllers\PaymentController::class,'response'])->middleware(['auth', 'verified'])->name('response');
-Route::get('/refund/{id}', [App\Http\Controllers\PaymentController::class,'refund'])->middleware(['auth', 'verified'])->name('refund');
+Route::get('/payment', [FrontController::class,'index'])->middleware(['auth', 'verified'])->name('payment');
+Route::get('/payment-success', [FrontController::class,'paymentsuccess'])->middleware(['auth', 'verified'])->name('paymentsuccess');
+Route::get('/payment-cancel', [FrontController::class,'paymentcancel'])->middleware(['auth', 'verified'])->name('paymentcancel');
+Route::post('/submitresponse', [PaymentController::class,'submitresponse'])->middleware(['auth', 'verified'])->name('submitresponse');
+Route::get('/payment-history', [PaymentController::class,'index'])->middleware(['auth', 'verified'])->name('paymenthistory');
+Route::post('/payment-history', [PaymentController::class,'index'])->middleware(['auth', 'verified'])->name('paymenthistorySearch');
+Route::any('/response', [PaymentController::class,'response'])->middleware(['auth', 'verified'])->name('response');
+Route::get('/refund/{id}', [PaymentController::class,'refund'])->middleware(['auth', 'verified'])->name('refund');
 
 
 require __DIR__.'/auth.php';

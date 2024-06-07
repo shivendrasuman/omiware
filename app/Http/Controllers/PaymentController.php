@@ -41,7 +41,7 @@ class PaymentController extends Controller
     public function submitresponse(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'product_price' => 'required|numeric|min:5|max:50',
+            'product_price' => 'required|numeric|min:2|max:9999',
             'user_name' => 'required|regex:/^[\pL\s\-]+$/u',
             'user_mobile' => 'required|numeric',
             'user_email' => 'required|email',
@@ -54,7 +54,7 @@ class PaymentController extends Controller
         ]);
         if ($validator->fails()) {
             return redirect()
-                ->route('/')
+                ->route('payment')
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -75,13 +75,13 @@ class PaymentController extends Controller
             } else {
                 $errormessage = 'somthing went wrong! Please try again later.';
                 return redirect()
-                    ->route('/')
+                    ->route('payment')
                     ->withErrors(['errorMessage' => $errormessage]);
             }
         } catch (\Exception $e) {
             $exception = $e->getMessage();
             return redirect()
-                ->route('/')
+                ->route('payment')
                 ->withErrors(['errorMessage' => $exception]);
         }
     }
@@ -95,7 +95,7 @@ class PaymentController extends Controller
         if (empty($iv) || empty($api_key) || $api_key != $this->omconfig->api_key) {
             $errormessage = 'Sorry! we are facing issues to validate your paymante.';
             return redirect()
-                ->route('/')
+                ->route('payment')
                 ->withErrors(['errorMessage' => $errormessage]);
         }
 
@@ -123,7 +123,7 @@ class PaymentController extends Controller
         } else {
             $errormessage = $DecreptedResponseData['response_message'] ?? 'Sorry! we are facing issues to validate your paymante.';
             return redirect()
-                ->route('/')
+                ->route('payment')
                 ->withErrors(['errorMessage' => $errormessage]);
         }
     }

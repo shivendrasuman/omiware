@@ -35,7 +35,7 @@
                     <h6 class="my-0">Product Price</h6>
                     <div class="input-group has-validation">
                         <span class="input-group-text">&#8377;</span>
-                        <input type="text" class="form-control" id="product_price" name="product_price" value="{{ old('product_price') }}" placeholder="2.0 " required>
+                        <input type="text" class="form-control" id="product_price" name="product_price" value="{{ rand(10,99) }}" placeholder="2.0 " required>
                         <small class="text-muted">Price should not be less then 2.0 and greater then 50.0</small>
                         @if ($errors->has('product_price'))
                         <div class="invalid-form-error" style="display: block;">
