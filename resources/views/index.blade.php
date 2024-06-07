@@ -82,31 +82,40 @@
 
                 <div class="row g-3">
                   <div class="col-sm-6">
-                    <label for="user_name" class="form-label">Api Key</label>
+                    <label for="api_key" class="form-label">Api Key</label>
                     <input type="text" class="form-control" id="api_key" name="api_key" placeholder="API KEY" value="{{ config('omiwaregateway.api_key') }}" required="required">
-                    @if ($errors->has('user_name'))
+                    @if ($errors->has('api_key'))
                     <div class="invalid-form-error">
-                        {{ $errors->first('user_name') }}
+                        {{ $errors->first('api_key') }}
                     </div>
                     @endif
                   </div>
 
                   <div class="col-sm-6">
-                    <label for="user_name" class="form-label">SALT</label>
+                    <label for="salt" class="form-label">SALT</label>
                     <input type="text" class="form-control" id="salt" name="salt" placeholder="SALT" value="{{ config('omiwaregateway.salt') }}" required="required">
-                    @if ($errors->has('user_name'))
+                    @if ($errors->has('salt'))
                     <div class="invalid-form-error">
-                        {{ $errors->first('user_name') }}
+                        {{ $errors->first('salt') }}
                     </div>
                     @endif
                   </div>
                   
                   <div class="col-sm-6">
-                    <label for="user_name" class="form-label">Encryption Key</label>
+                    <label for="req_encryption_key" class="form-label">Encryption Key</label>
                     <input type="text" class="form-control" id="req_encryption_key" name="req_encryption_key" placeholder="Encryption key" value="{{ config('omiwaregateway.req_encryption_key') }}" required="required">
-                    @if ($errors->has('user_name'))
+                    @if ($errors->has('req_encryption_key'))
                     <div class="invalid-form-error">
-                        {{ $errors->first('user_name') }}
+                        {{ $errors->first('req_encryption_key') }}
+                    </div>
+                    @endif
+                  </div>
+                  <div class="col-sm-6">
+                    <label for="res_decryption_key" class="form-label">Decryption Key</label>
+                    <input type="text" class="form-control" id="res_decryption_key" name="res_decryption_key" placeholder="Encryption key" value="{{ config('omiwaregateway.res_decryption_key') }}" required="required">
+                    @if ($errors->has('res_decryption_key'))
+                    <div class="invalid-form-error">
+                        {{ $errors->first('res_decryption_key') }}
                     </div>
                     @endif
                   </div>
