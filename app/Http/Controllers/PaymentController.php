@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
 {
@@ -62,6 +63,8 @@ class PaymentController extends Controller
             //store payment data in database
            $postData = $this->storePaymentData($request);
             if ($postData) {
+                $decryption_key = (isset($postData['res_decryption_key']) && !empty($postData['res_decryption_key'] )? $postData['res_decryption_key'] : $this->omconfig->res_decryption_key);
+                Session::put('decryption_key', $decryption_key);
                 $api_key = (isset($postData['api_key']) && !empty($postData['api_key'] )? $postData['api_key'] : $this->omconfig->api_key);
                 $postData['api_key'] = $api_key;
                 $postData['return_url'] = url($this->omconfig->return_url);
@@ -99,7 +102,7 @@ class PaymentController extends Controller
                 ->withErrors(['errorMessage' => $errormessage]);
         }
 
-        $decryption_key = $this->omconfig->res_decryption_key;
+        $decryption_key = Session::get('decryption_key') ??  $this->omconfig->res_decryption_key;
         $DecreptedResonseDatajson = $this->decryptData($encrypted_data, $decryption_key, $iv);
         $DecreptedResponseData = json_decode($DecreptedResonseDatajson, true);
         //validate hash for data security
@@ -119,6 +122,8 @@ class PaymentController extends Controller
             $Paymnetrequest['response_message'] = $DecreptedResponseData['response_message'];
 
             $PaymentUpdate = Paymentrequest::where('order_id', $orderID)->update($Paymnetrequest);
+
+            session()->forget('decryption_key');
             return view('paymentsuccess', compact('DecreptedResponseData'));
         } else {
             $errormessage = $DecreptedResponseData['response_message'] ?? 'Sorry! we are facing issues to validate your paymante.';
