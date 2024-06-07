@@ -62,12 +62,12 @@ class PaymentController extends Controller
             //store payment data in database
            $postData = $this->storePaymentData($request);
             if ($postData) {
-                $api_key = $this->omconfig->api_key;
+                $api_key = (isset($postData['api_key']) && !empty($postData['api_key'] )? $postData['api_key'] : $this->omconfig->api_key);
                 $postData['api_key'] = $api_key;
                 $postData['return_url'] = url($this->omconfig->return_url);
                 $postData['hash'] = $this->generateHashKey($postData, $this->omconfig->salt);
-                $api_url = $this->omconfig->api_url;
-                $encryption_key = $this->omconfig->req_encryption_key;
+                $api_url = (isset($postData['api_url']) && !empty($postData['api_url'] )? $postData['api_url'] : $this->omconfig->api_url);
+                $encryption_key = (isset($postData['req_encryption_key']) && !empty($postData['req_encryption_key'] )? $postData['req_encryption_key'] : $this->omconfig->req_encryption_key);
                 $EncryptPostData = $this->encryptData(json_encode($postData), $encryption_key);
                 $encrypted_data = $EncryptPostData[0];
                 $iv = $EncryptPostData[1];

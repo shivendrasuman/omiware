@@ -35,8 +35,8 @@
                     <h6 class="my-0">Product Price</h6>
                     <div class="input-group has-validation">
                         <span class="input-group-text">&#8377;</span>
-                        <input type="text" class="form-control" id="product_price" name="product_price" value="{{ old('product_price') }}" placeholder="5.0 " required>
-                        <small class="text-muted">Price should not be less then 5.0 and greater then 50.0</small>
+                        <input type="text" class="form-control" id="product_price" name="product_price" value="{{ old('product_price') }}" placeholder="2.0 " required>
+                        <small class="text-muted">Price should not be less then 2.0 and greater then 50.0</small>
                         @if ($errors->has('product_price'))
                         <div class="invalid-form-error" style="display: block;">
                             {{ $errors->first('product_price') }}
@@ -68,9 +68,50 @@
               </form> --}}
             </div>
             <div class="col-md-7 col-lg-8">
-              <h4 class="mb-3">Billing address</h4>
+              <h4 class="mb-3">Configuration</h4>
               <form class="needs-validation" novalidate="">
+                <div class="col-sm-12">
+                  <label for="user_mobile" class="form-label">Request URL</label>
+                  <input type="tel"  class="form-control" id="request_url" name="request_url" placeholder="" value="{{ config('omiwaregateway.api_url') }}" required>
+                  @if ($errors->has('user_mobile'))
+                  <div class="invalid-form-error">
+                      {{ $errors->first('user_mobile') }}
+                  </div>
+                  @endif
+                </div>
+
                 <div class="row g-3">
+                  <div class="col-sm-6">
+                    <label for="user_name" class="form-label">Api Key</label>
+                    <input type="text" class="form-control" id="api_key" name="api_key" placeholder="API KEY" value="{{ config('omiwaregateway.api_key') }}" required="required">
+                    @if ($errors->has('user_name'))
+                    <div class="invalid-form-error">
+                        {{ $errors->first('user_name') }}
+                    </div>
+                    @endif
+                  </div>
+
+                  <div class="col-sm-6">
+                    <label for="user_name" class="form-label">SALT</label>
+                    <input type="text" class="form-control" id="salt" name="salt" placeholder="SALT" value="{{ config('omiwaregateway.salt') }}" required="required">
+                    @if ($errors->has('user_name'))
+                    <div class="invalid-form-error">
+                        {{ $errors->first('user_name') }}
+                    </div>
+                    @endif
+                  </div>
+                  
+                  <div class="col-sm-6">
+                    <label for="user_name" class="form-label">Encryption Key</label>
+                    <input type="text" class="form-control" id="req_encryption_key" name="req_encryption_key" placeholder="Encryption key" value="{{ config('omiwaregateway.req_encryption_key') }}" required="required">
+                    @if ($errors->has('user_name'))
+                    <div class="invalid-form-error">
+                        {{ $errors->first('user_name') }}
+                    </div>
+                    @endif
+                  </div>
+<hr>
+<h4 class="mb-3">Billing address</h4>
                   <div class="col-sm-6">
                     <label for="user_name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Full Name" value="{{ old('user_name') }}" required="required">
@@ -114,7 +155,7 @@
       
                   <div class="col-12">
                     <label for="user_address2" class="form-label">Address 2 </label>
-                    <input type="text" class="form-control" id="user_address2" name="user_address2" value="{{ old('user_address2') }}" placeholder="Apartment or suite" required>
+                    <input type="text" class="form-control" id="user_address2" name="user_address2" value="{{ old('user_address2') }}" placeholder="Apartment or suite" >
                     @if ($errors->has('user_address2'))
                     <div class="invalid-form-error">
                         {{ $errors->first('user_address2') }}
