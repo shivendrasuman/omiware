@@ -72,7 +72,7 @@
               <form class="needs-validation" novalidate="">
                 <div class="col-sm-12">
                   <label for="user_mobile" class="form-label">Request URL</label>
-                  <input type="tel"  class="form-control" id="request_url" name="request_url" placeholder="" value="{{ config('omiwaregateway.api_url') }}" required>
+                  <input type="tel"  class="form-control" id="api_url" name="api_url" placeholder="" value="{{ config('omiwaregateway.api_url') }}" required>
                   @if ($errors->has('user_mobile'))
                   <div class="invalid-form-error">
                       {{ $errors->first('user_mobile') }}
