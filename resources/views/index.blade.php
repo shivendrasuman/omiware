@@ -123,7 +123,7 @@
 <h4 class="mb-3">Billing address</h4>
                   <div class="col-sm-6">
                     <label for="user_name" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Full Name" value="{{ old('user_name') }}" required="required">
+                    <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Full Name" value="Test Suman" required="required">
                     @if ($errors->has('user_name'))
                     <div class="invalid-form-error">
                         {{ $errors->first('user_name') }}
@@ -133,7 +133,7 @@
       
                   <div class="col-sm-6">
                     <label for="user_mobile" class="form-label">Mobile</label>
-                    <input type="tel"  class="form-control" id="user_mobile" name="user_mobile" placeholder="XXXXXXXXXX" value="{{ old('user_mobile') }}" required>
+                    <input type="tel"  class="form-control" id="user_mobile" name="user_mobile" placeholder="XXXXXXXXXX" value="9876543256" required>
                     @if ($errors->has('user_mobile'))
                     <div class="invalid-form-error">
                         {{ $errors->first('user_mobile') }}
@@ -144,7 +144,7 @@
       
                   <div class="col-12">
                     <label for="user_email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="user_email" name="user_email" value="{{ old('user_email') }}" placeholder="you@example.com" required>
+                    <input type="email" class="form-control" id="user_email" name="user_email" value="test@omniware.in" placeholder="you@example.com" required>
                     @if ($errors->has('user_email'))
                     <div class="invalid-form-error">
                         {{ $errors->first('user_email') }}
@@ -154,7 +154,7 @@
       
                   <div class="col-12">
                     <label for="user_address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="user_address" name="user_address" value="{{ old('user_address') }}" placeholder="1234 Main St" required="required">
+                    <input type="text" class="form-control" id="user_address" name="user_address" value="Test Duniya" placeholder="1234 Main St" required="required">
                     @if ($errors->has('user_address'))
                     <div class="invalid-form-error">
                         {{ $errors->first('user_address') }}
@@ -164,7 +164,7 @@
       
                   <div class="col-12">
                     <label for="user_address2" class="form-label">Address 2 </label>
-                    <input type="text" class="form-control" id="user_address2" name="user_address2" value="{{ old('user_address2') }}" placeholder="Apartment or suite" >
+                    <input type="text" class="form-control" id="user_address2" name="user_address2" value="Behind Real Duniya" placeholder="Apartment or suite" >
                     @if ($errors->has('user_address2'))
                     <div class="invalid-form-error">
                         {{ $errors->first('user_address2') }}
@@ -174,8 +174,7 @@
       
                   <div class="col-md-3">
                     <label for="country" class="form-label">Country</label>
-                    <select class="form-select" id="country" name="country">
-                      <option value="">Choose...</option>
+                    <select class="form-select" id="country" name="country">                    
                       <option value="IND">India</option>
                     </select>
                     @if ($errors->has('country'))
@@ -187,8 +186,7 @@
       
                   <div class="col-md-3">
                     <label for="state" class="form-label">State</label>
-                    <select class="form-select" id="state" name="state" required="required">
-                      <option value="">Choose...</option>
+                    <select class="form-select" id="state" name="state" required="required">                    
                       <option value="Bangalore">Bangalore</option>
                       <option value="Bihar">Bihar</option>
                       <option value="Delhi">Delhi</option>
@@ -201,7 +199,7 @@
                   </div>
                   <div class="col-md-3">
                     <label for="city" class="form-label">City</label>
-                    <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}"  placeholder="City Name" required>
+                    <input type="text" class="form-control" id="city" name="city" value="Banglore"  placeholder="City Name" required>
                     @if ($errors->has('city'))
                     <div class="invalid-form-error">
                         {{ $errors->first('city') }}
@@ -211,7 +209,7 @@
       
                   <div class="col-md-3">
                     <label for="zip" class="form-label">Zip</label>
-                    <input type="text" class="form-control" id="zip" name="zip" value="{{ old('zip') }}" placeholder="" required>
+                    <input type="text" class="form-control" id="zip" name="zip" value="560043" placeholder="" required>
                     @if ($errors->has('zip'))
                     <div class="invalid-form-error">
                         {{ $errors->first('zip') }}
