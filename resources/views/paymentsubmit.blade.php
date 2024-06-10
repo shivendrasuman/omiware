@@ -11,17 +11,17 @@
           <div class="row g-5">
             <form action="{{$api_url}}" method="post"  id="paymentSubmit" >
              
-              <input type="hidden" value="{{$api_key}}" name="api_key"/>
-              <input type="hidden" value="{{$encrypted_data}}" name="encrypted_data"/>
-              <input type="hidden" value="{{$iv}}" name="iv"/>
+              <input type="text" value="{{$api_key}}" name="api_key"/>
+              <input type="text" value="{{$encrypted_data}}" name="encrypted_data"/>
+              <input type="text" value="{{$iv}}" name="iv"/>
               <!-- Generally instead of showing the submit button do an auto submit using
               javascript onload="document.forms[0].submit()" -->
-              <input type="submit" value="Submit" style="display: none;">
+              <input type="submit" value="Submit" >
           </form>
           </div>
         </div>
     </main>  
     <script>
-      window.onload = (event) => {document.getElementById("paymentSubmit").submit();}
+      //window.onload = (event) => {document.getElementById("paymentSubmit").submit();}
       </script>
   @endsection       
